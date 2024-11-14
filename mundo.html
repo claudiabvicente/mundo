@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curiosidades Incríveis do Mundo 🌍</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos Básicos */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(90deg, #4CAF50, #006400);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 2.5em;
+            animation: colorChange 8s infinite alternate;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease;
+        }
+        .highlight {
+            color: #006400;
+            font-weight: bold;
+        }
+        /* Animações */
+        @keyframes colorChange {
+            from { background-color: #4CAF50; }
+            to { background-color: #228B22; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Estilos de Botão e Respostas */
+        .game-button, .quiz-answer {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            color: white;
+            background: #007BFF;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .game-button:hover, .quiz-answer:hover {
+            background: #0056b3;
+        }
+        .answer-correct {
+            color: green;
+            font-weight: bold;
+        }
+        .answer-wrong {
+            color: red;
+            font-weight: bold;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Curiosidades Incríveis do Mundo 🌍
+</header>
+
+<div class="container">
+
+    <section class="card">
+        <h2>💡 Curiosidades do Mundo</h2>
+        <p>Explore algumas das curiosidades mais impressionantes e inesperadas sobre o nosso planeta!</p>
+        <ul>
+            <li><span class="highlight">As tartarugas marinhas</span> podem viver até 150 anos ou mais.</li>
+            <li>A <span class="highlight">Amazônia</span> produz cerca de 20% do oxigênio do planeta.</li>
+            <li>A Lua está se afastando da Terra cerca de 3,8 cm por ano!</li>
+            <li>As <span class="highlight">árvores de Redwood</span>, na Califórnia, são as mais altas do mundo, chegando a 115 metros!</li>
+            <li>Você sabia que existem mais estrelas no universo do que grãos de areia em todas as praias da Terra?</li>
+        </ul>
+    </section>
+
+    <section class="card">
+        <h2>🔍 Quiz de QI</h2>
+        <div id="quiz-container">
+            <div class="quiz-question">Qual o animal mais rápido do mundo?</div>
+            <button class="quiz-answer" onclick="checkAnswer(this, 'errado')">Leopardo</button>
+            <button class="quiz-answer" onclick="checkAnswer(this, 'correto')">Falcão-peregrino</button>
+            <button class="quiz-answer" onclick="checkAnswer(this, 'errado')">Cavalo</button>
+            <div id="quiz-result" class="hidden"></div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>🎮 Joguinho da Sorte</h2>
+        <p>Teste sua sorte clicando no botão abaixo. Se conseguir um número maior que 90, você é considerado sortudo!</p>
+        <button class="game-button" onclick="playGame()">Tente a sorte!</button>
+        <div id="game-result" class="hidden"></div>
+    </section>
+
+    <section class="card">
+        <h2>🧠 Teste Seu Conhecimento</h2>
+        <p>Vamos ver quantas dessas perguntas você consegue acertar!</p>
+        <div id="question-1">
+            <div class="quiz-question">Qual o maior deserto do mundo?</div>
+            <button class="quiz-answer" onclick="checkMultiAnswer(this, 'errado')">Sahara</button>
+            <button class="quiz-answer" onclick="checkMultiAnswer(this, 'correto')">Antártida</button>
+            <button class="quiz-answer" onclick="checkMultiAnswer(this, 'errado')">Kalahari</button>
+            <div id="result-1" class="hidden"></div>
+        </div>
+
+        <div id="question-2" class="hidden">
+            <div class="quiz-question">Quantos ossos tem o corpo humano?</div>
+            <button class="quiz-answer" onclick="checkMultiAnswer(this, 'correto', 'result-2')">206</button>
+            <button class="quiz-answer" onclick="checkMultiAnswer(this, 'errado', 'result-2')">212</button>
+            <button class="quiz-answer" onclick="checkMultiAnswer(this, 'errado', 'result-2')">199</button>
+            <div id="result-2" class="hidden"></div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>🌎 Curiosidades Científicas</h2>
+        <ul>
+            <li><span class="highlight">A temperatura mais baixa registrada na Terra</span> foi -89,2°C na Antártida.</li>
+            <li><span class="highlight">O Oceano Pacífico</span> é tão grande que cobre mais área do que todos os continentes juntos.</li>
+            <li><span class="highlight">As pirâmides do Egito</span> foram construídas há mais de 4.500 anos, antes mesmo da invenção da roda.</li>
+            <li><span class="highlight">A maior estrutura viva do mundo</span> é a Grande Barreira de Coral, que pode ser vista do espaço!</li>
+            <li><span class="highlight">O cérebro humano</span> possui mais conexões que todas as estrelas da Via Láctea.</li>
+        </ul>
+    </section>
+</div>
+
+<script>
+    function checkAnswer(button, status) {
+        const resultDiv = document.getElementById("quiz-result");
+        if (status === 'correto') {
+            resultDiv.innerHTML = "<span class='answer-correct'>Resposta Correta! 🌟</span>";
+        } else {
+            resultDiv.innerHTML = "<span class='answer-wrong'>Resposta Errada. Tente outra vez! 😅</span>";
+        }
+        resultDiv.classList.remove("hidden");
+    }
+
+    function playGame() {
+        const result = Math.floor(Math.random() * 100) + 1;
+        const resultDiv = document.getElementById("game-result");
+        resultDiv.innerHTML = `<p>Você tirou o número ${result}! ${result > 90 ? "Parabéns, você tem muita sorte! 🍀" : "Tente de novo!"}</p>`;
+        resultDiv.classList.remove("hidden");
+    }
+
+    function checkMultiAnswer(button, status, resultId = 'result-1') {
+        const resultDiv = document.getElementById(resultId);
+        if (status === 'correto') {
+            resultDiv.innerHTML = "<span class='answer-correct'>Resposta Correta! 🌟</span>";
+            resultDiv.classList.remove("hidden");
+            if (resultId === 'result-1') {
+                document.getElementById('question-2').classList.remove('hidden');
+            }
+        } else {
+            resultDiv.innerHTML = "<span class='answer-wrong'>Resposta Errada. Tente outra vez! 😅</span>";
+            resultDiv.classList.remove("hidden");
+        }
+    }
+</script>
+
+</body>
+</html>
